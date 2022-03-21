@@ -134,15 +134,6 @@ const IndexPage = () => {
         }}
       />
       <Section containerClass="grid relative place-items-center grid-area-1 pb-5">
-        <div
-          className="text-center flex justify-center flex-wrap items-center py-2 text-white font-medium
-          bg-[#2575E7] fixed top-0 left-0 right-0 z-50"
-        >
-          <div>
-            <span className="font-light">Sale Ends in: </span>
-            <CountDowntimer />
-          </div>
-        </div>
         <SiteLogo text="Garfield Family" />
         <div className="flex flex-col items-center md:flex-row md:justify-between md:space-x-5">
           <div className="rounded-full bg-gray-50 p-1 w-52 h-52 min-w-[208px] mx-auto">
@@ -152,16 +143,16 @@ const IndexPage = () => {
               className="rounded-full w-full h-full"
             />
           </div>
-          <div className="bg-[#001C44]/70 rounded-3xl p-5 md:p-10 my-5 max-w-xl text-white">
+          <div className="bg-[#001C44]/70 rounded-3xl p-5 md:p-10 my-5 max-w-2xl text-white">
             <div className="space-y-3">
               <p>
                 The first Cat themed NFT collection in the world has been
-                freshly minted by the
+                freshly minted by the prince of cats - Garfield
               </p>
               <p>
                 Garfield Family creates a digital cat pet world where players
                 can raise and breed varieties of cute cats and fight shoulder to
-                shoulder in the adventure world with your cats.
+                shoulder in the adventure world with their cats.
               </p>
               <p>
                 Ownership is totally decided by players, allowing players to
@@ -171,7 +162,7 @@ const IndexPage = () => {
             </div>
             <div>
               <h2>Garfield Family Token Details</h2>
-              <ul>
+              <ul className="text-sm">
                 <li>Network: Binance Smart Chain (BSC)</li>
                 <li>Name: Garfield Family Games</li>
                 <li>Symbol: GFF</li>
@@ -238,6 +229,15 @@ const IndexPage = () => {
             copyright &copy; Garfield Family - {new Date().getFullYear()}
           </div>
         </footer>
+        <div
+          className="text-center flex justify-center flex-wrap items-center py-2 text-white font-medium
+          bg-[#2575E7] mt-3"
+        >
+          <div>
+            <span className="font-light">Sale Ends in: </span>
+            <CountDowntimer />
+          </div>
+        </div>
       </Section>
     </main>
   );
