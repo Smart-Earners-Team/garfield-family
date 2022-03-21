@@ -8,9 +8,9 @@ import Button from "../components/Buttons";
 import { checkTokenAllowance, sellGff } from "../utils/calls";
 import useToast from "../hooks/useToast";
 import { useAppContext } from "../hooks/useAppContext";
-import { getGffAddress, getGffContractAddress } from "../utils/addressHelpers";
+import { getBusdAddress, getGffAddress, getGffContractAddress } from "../utils/addressHelpers";
 import useApproveToken from "../hooks/useApproveToken";
-import { getGffTokenContract } from "../utils/contractHelpers";
+import { getBusdContract, getGffTokenContract } from "../utils/contractHelpers";
 import { StaticImage } from "gatsby-plugin-image";
 import gif1 from "../images/garfield-family-gif1.gif";
 import gif2 from "../images/garfield-family-gif2.gif";
@@ -30,7 +30,7 @@ const IndexPage = () => {
   const { active, library, account } = useActiveWeb3React();
   const { toastError, toastSuccess } = useToast();
   const { onApprove } = useApproveToken(
-    getGffTokenContract(library?.getSigner()),
+    getBusdContract(library?.getSigner()),
     getGffContractAddress()
   );
 
@@ -41,7 +41,7 @@ const IndexPage = () => {
         const allowance = await checkTokenAllowance(
           getGffContractAddress(),
           account,
-          getGffAddress(),
+          getBusdAddress(),
           library.getSigner()
         );
         if (allowance.isGreaterThan(0)) {
