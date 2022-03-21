@@ -14,6 +14,7 @@ export const BASE_BSC_SCAN_URL = BASE_BSC_SCAN_URLS[ChainId.MAINNET];
 
 export const tokens = {
   gff: { 56: "0x5BC1dE85Fb09eDEefD54869cd8cFB20B30574CE8", 97: "" },
+  busd: {56: "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56", 97: ""}
 };
 export const addresses = {
   multiCall: {
