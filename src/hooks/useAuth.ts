@@ -48,6 +48,7 @@ const useAuth = () => {
                 "Please authorize to access your account"
               );
             } else {
+              console.error(error);
               toastError(
                 "Unable to connect",
                 "Something went wrong while trying to connect to your wallet."

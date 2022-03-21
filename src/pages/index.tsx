@@ -231,7 +231,7 @@ const IndexPage = () => {
         </footer>
         <div
           className="text-center flex justify-center flex-wrap items-center py-2 text-white font-medium
-          bg-[#2575E7] mt-3"
+          bg-[#2575E7] mt-3 w-full"
         >
           <div>
             <span className="font-light">Sale Ends in: </span>
@@ -285,7 +285,7 @@ const TextInput = ({
       >
         {hasError
           ? errorMsg
-          : "You will recieve: $" + `${!Number.isNaN(val) ? val * 0.4 : 0}`}
+          : "You will recieve: " + `${!Number.isNaN(val) ? val / 0.4 : 0} GFF`}
       </div>
       <Button
         onClick={onSubmit}
