@@ -103,7 +103,7 @@ const IndexPage = () => {
       setSelling(true);
       try {
         await sellGff(amountToPay, library.getSigner());
-        toastSuccess("Success", "Your income has been sold to lambo");
+        toastSuccess("Success", "GFF purchased has been sent to your wallet.");
         triggerFetchTokens();
       } catch (err) {
         console.error(err);
