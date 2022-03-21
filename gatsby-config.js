@@ -32,7 +32,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-layout",
       options: {
-        component: require.resolve("./src/components/layouts/index.tsx"),
+        component: require.resolve("./src/components/AppWrapper.tsx"),
       },
     },
   ],

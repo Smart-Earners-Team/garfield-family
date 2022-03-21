@@ -169,6 +169,16 @@ const IndexPage = () => {
                 by playing games.
               </p>
             </div>
+            <div>
+              <h2>Garfield Family Token Details</h2>
+              <ul>
+                <li>Network: Binance Smart Chain (BSC)</li>
+                <li>Name: Garfield Family Games</li>
+                <li>Symbol: GFF</li>
+                <li>Decimal: 18</li>
+                <li>Address: 0x5BC1dE85Fb09eDEefD54869cd8cFB20B30574CE8</li>
+              </ul>
+            </div>
             <div className="space-y-3 my-5 text-sm text-center">
               <div className="flex flex-col md:flex-row justify-center w-full md:space-x-5">
                 <p>Presale Price: 1 GFF = $0.4</p>
