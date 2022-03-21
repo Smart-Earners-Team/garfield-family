@@ -8,9 +8,9 @@ import Button from "../components/Buttons";
 import { checkTokenAllowance, sellGff } from "../utils/calls";
 import useToast from "../hooks/useToast";
 import { useAppContext } from "../hooks/useAppContext";
-import { getBusdAddress, getGffAddress, getGffContractAddress } from "../utils/addressHelpers";
+import { getBusdAddress, getGffContractAddress } from "../utils/addressHelpers";
 import useApproveToken from "../hooks/useApproveToken";
-import { getBusdContract, getGffTokenContract } from "../utils/contractHelpers";
+import { getBusdContract } from "../utils/contractHelpers";
 import { StaticImage } from "gatsby-plugin-image";
 import gif1 from "../images/garfield-family-gif1.gif";
 import gif2 from "../images/garfield-family-gif2.gif";
@@ -106,7 +106,7 @@ const IndexPage = () => {
         toastSuccess("Success", "Your income has been sold to lambo");
         triggerFetchTokens();
       } catch (err) {
-        // console.error(err);
+        console.error(err);
         toastError(
           "Error",
           `Something went wrong while trying to perform the transaction.
