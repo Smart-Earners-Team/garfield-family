@@ -117,7 +117,7 @@ const IndexPage = () => {
         setSelling(false);
       }
     }
-  }, [library]);
+  }, [library, amountToPay]);
 
   return (
     <main className="min-h-screen w-full grid">
