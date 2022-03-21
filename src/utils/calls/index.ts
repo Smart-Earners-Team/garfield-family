@@ -58,7 +58,7 @@ export const checkTokenAllowance = async (
   return new BigNumber(rawTokenAllowance);
 };
 
-export const sellGff = async (amount: string, signer: CallSignerType) => {
+export const buyGff = async (amount: string, signer: CallSignerType) => {
   const value = new BigNumber(amount)
     .times(BIG_TEN.pow(18))
     .toFixed()

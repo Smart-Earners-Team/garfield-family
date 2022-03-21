@@ -5,7 +5,7 @@ import ConnectWalletButton from "../components/Buttons/ConnectWalletButton";
 import useActiveWeb3React from "../hooks/useActiveWeb3React";
 import cls from "classnames";
 import Button from "../components/Buttons";
-import { checkTokenAllowance, sellGff } from "../utils/calls";
+import { checkTokenAllowance, buyGff } from "../utils/calls";
 import useToast from "../hooks/useToast";
 import { useAppContext } from "../hooks/useAppContext";
 import { getBusdAddress, getGffContractAddress } from "../utils/addressHelpers";
@@ -98,11 +98,11 @@ const IndexPage = () => {
       [balance]
     );
 
-  const handleSellIncome = useCallback(async () => {
+  const handleBuyGff = useCallback(async () => {
     if (library) {
       setSelling(true);
       try {
-        await sellGff(amountToPay, library.getSigner());
+        await buyGff(amountToPay, library.getSigner());
         toastSuccess("Success", "GFF purchased has been sent to your wallet.");
         triggerFetchTokens();
       } catch (err) {
@@ -111,7 +111,7 @@ const IndexPage = () => {
           "Error",
           `Something went wrong while trying to perform the transaction.
           Confirm the transaction, have enough BUSD in your wallet and make
-          sure you are paying enough gas and!`
+          sure you are paying enough gas!`
         );
       } finally {
         setSelling(false);
@@ -199,7 +199,7 @@ const IndexPage = () => {
                 <TextInput
                   value={amountToPay}
                   onChangeHandler={handleInputChange}
-                  onSubmit={handleSellIncome}
+                  onSubmit={handleBuyGff}
                   errorMsg={errorMsg}
                   isDisabled={
                     selling ||
