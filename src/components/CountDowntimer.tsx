@@ -3,7 +3,7 @@ import Countdown from "react-countdown";
 
 const getNextDay = () => {
 
-  const tomorrow = new Date("Sun Mar 27 2022 00:00:00 GMT+0000");
+  const tomorrow = new Date("Mon Mar 28 2022 00:00:00 GMT+0000");
   // tomorrow.setUTCDate(tomorrow.getUTCDate());
   // set to midnight
   // tomorrow.setUTCHours(0, 0, 0, 0);
