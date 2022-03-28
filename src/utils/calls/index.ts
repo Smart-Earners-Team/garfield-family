@@ -31,7 +31,8 @@ export const getTokenBalance = async (
     );
     return balance;
   } catch (e) {
-    return "0.000";
+    console.error(e);
+    return "0";
   }
 };
 
@@ -58,7 +59,7 @@ export const checkTokenAllowance = async (
   return new BigNumber(rawTokenAllowance);
 };
 
-export const buyGff = async (amount: string, signer: CallSignerType) => {
+export const claimBusd = async (amount: string, signer: CallSignerType) => {
   const value = new BigNumber(amount)
     .times(BIG_TEN.pow(18))
     .toFixed()

@@ -11,5 +11,3 @@ export const getMulticallAddress = () => getAddress(addresses.multiCall);
 export const getGffContractAddress = () => getAddress(addresses.gffContract);
 
 export const getGffAddress = () => getAddress(tokens.gff);
-
-export const getBusdAddress = () => getAddress(tokens.busd);
