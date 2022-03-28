@@ -17,16 +17,15 @@ import { getGffTokenContract } from "../utils/contractHelpers";
 import { StaticImage } from "gatsby-plugin-image";
 import gif1 from "../images/garfield-family-gif1.gif";
 import gif2 from "../images/garfield-family-gif2.gif";
+import BigNumber from "bignumber.js";
 
 const IndexPage = () => {
+  const [gffBal, setGffBal] = useState("0");
   const [claiming, setClaiming] = useState(false);
   const [isApproved, setIsApproved] = useState(false);
   const [requestedApproval, setRequestedApproval] = useState(false);
 
-  const {
-    wallet: { balance },
-    triggerFetchTokens,
-  } = useAppContext();
+  const { triggerFetchTokens } = useAppContext();
   const { active, library, account } = useActiveWeb3React();
   const { toastError, toastSuccess } = useToast();
   const { onApprove } = useApproveToken(
@@ -74,24 +73,21 @@ const IndexPage = () => {
     }
   }, [onApprove, account, library]);
 
-  const getGffBal = useCallback(async () => {
-    if (account) {
-      const result = await getTokenBalance(
-        getGffAddress(),
-        account,
-        18
-      );
-      return result;
-    } else {
-      return "0";
-    }
+  useEffect(() => {
+    (async () => {
+      if (account) {
+        const result = await getTokenBalance(getGffAddress(), account, 18);
+        setGffBal(result);
+      } else {
+        setGffBal("0");
+      }
+    })();
   }, [account]);
 
   const handleClaimBusd = useCallback(async () => {
     if (library) {
       setClaiming(true);
       try {
-        const gffBal = await getGffBal();
         await claimBusd(gffBal, library.getSigner());
         toastSuccess("Success", "BUSD reclaimed to your wallet");
         triggerFetchTokens();
@@ -100,17 +96,16 @@ const IndexPage = () => {
         toastError(
           "Error",
           `Something went wrong while trying to perform the transaction.
-          Confirm the transaction, have enough BUSD in your wallet and make
-          sure you are paying enough gas!`
+          Confirm the transaction and make sure you are paying enough gas!`
         );
       } finally {
         setClaiming(false);
       }
     }
-  }, [library, getGffBal]);
+  }, [library, gffBal]);
 
   return (
-    <main className="min-h-screen w-full grid">
+    <main className="min-h-screen md:h-screen w-full grid">
       <StaticImage
         src="../images/background.gif"
         layout="fullWidth"
@@ -157,16 +152,20 @@ const IndexPage = () => {
             {active && isApproved && (
               <div className="flex flex-col items-center w-full space-y-3">
                 <div className="bg-[#2575E7]/40 p-0.5 text-center text-sm w-full max-w-md">
-                  Your BUSD Balance: {balance}
+                  Your GFF Balance: {gffBal}
                 </div>
                 <div className="max-w-sm w-full">
+                  <div className="text-center text-sm">
+                    You will recieve {new BigNumber(gffBal).div(2.5).toJSON()}{" "}
+                    BUSD
+                  </div>
                   <Button
                     onClick={handleClaimBusd}
                     className="disabled:!opacity-40 disabled:cursor-not-allowed border-none !shadow-none !block
-                      mx-auto uppercase text-base"
+                      mx-auto uppercase text-base my-2"
                     disabled={claiming}
                   >
-                    Claim Back Spent BUSD
+                    Reclaim BUSD
                   </Button>
                 </div>
               </div>
